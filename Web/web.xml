@@ -1,0 +1,28 @@
+
+<web-app xmlns="https://jakarta.ee/xml/ns/jakartaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee 
+         https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd"
+         version="6.0">
+
+    <!-- ✅ Servlet de Contacto (GET) -->
+    <servlet>
+        <servlet-name>ContactoServlet</servlet-name>
+        <servlet-class>servlets.ContactoServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ContactoServlet</servlet-name>
+        <url-pattern>/ContactoServlet</url-pattern>
+    </servlet-mapping>
+
+    <!-- ✅ Servlet de Solicitud (POST) -->
+    <servlet>
+        <servlet-name>SolicitudServlet</servlet-name>
+        <servlet-class>servlets.SolicitudServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SolicitudServlet</servlet-name>
+        <url-pattern>/SolicitudServlet</url-pattern>
+    </servlet-mapping>
+
+</web-app>
