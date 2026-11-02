@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JJSM - Impresoras 3D Store</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style: none;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #f5f5f5;
+    color: #333;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+}
+
+header {
+    background: linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,.6)),
+    url('imagen/backgrads.jpg');
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh;
+    color: white;
+}
+
+.menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px 0;
+    flex-wrap: wrap;
+}
+
+.logo {
+    font-size: 30px;
+    font-weight: 700;
+    color: #00a8ff;
+}
+
+.navbar ul {
+    display: flex;
+    gap: 18px;
+    flex-wrap: wrap;
+}
+
+.navbar a {
+    color: white;
+    font-size: 14px;
+}
+
+.navbar a:hover {
+    color: #00a8ff;
+}
+
+.header-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    min-height: 75vh;
+}
+
+.header-txt h1 {
+    font-size: 55px;
+    margin-bottom: 20px;
+}
+
+.header-txt span {
+    color: #00a8ff;
+}
+
+.header-txt p {
+    font-size: 18px;
+    max-width: 700px;
+    margin: auto;
+    line-height: 1.7;
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 25px;
+    background: #00a8ff;
+    color: white;
+    border: none;
+    border-radius: 9px;
+    margin: 10px 5px;
+    cursor: pointer;
+    font-family: inherit;
+    transition: .3s;
+}
+
+.btn:hover {
+    background: #0077b6;
+    transform: translateY(-3px);
+}
+
+section {
+    padding: 75px 0;
+}
+
+h2 {
+    text-align: center;
+    font-size: 35px;
+    margin-bottom: 40px;
+    color: #222;
+}
+
+.products {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+    gap: 30px;
+}
+
+.card {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,.1);
+    transition: .3s;
+}
+
+.card:hover {
+    transform: translateY(-7px);
+}
+
+.card img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+}
+
+.card-content {
+    padding: 20px;
+}
+
+.card-content h3 {
+    margin-bottom: 10px;
+}
+
+.price {
+    color: #00a8ff;
+    font-size: 22px;
+    font-weight: bold;
+    margin: 15px 0;
+}
+
+.about {
+    background: #111827;
+    color: white;
+    text-align: center;
+}
+
+.about h2 {
+    color: white;
+}
+
+.about p {
+    max-width: 900px;
+    margin: auto;
+    line-height: 1.8;
+    font-size: 17px;
+}
+
+.form-box {
+    max-width: 650px;
+    margin: auto;
+    background: white;
+    padding: 35px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,.1);
+}
+
+.form-box input,
+.form-box textarea,
+.form-box select {
+    width: 100%;
+    padding: 14px;
+    margin-bottom: 18px;
+    border: 1px solid #ccc;
+    border-radius: 9px;
+    font-family: inherit;
+    font-size: 15px;
+}
+
+.form-box button {
+    width: 100%;
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    background: white;
+    padding: 20px;
+    margin-bottom: 15px;
+    border-radius: 12px;
+    box-shadow: 0 3px 10px rgba(0,0,0,.08);
+}
+
+.cart-item button {
+    border: none;
+    padding: 8px 12px;
+    border-radius: 7px;
+    cursor: pointer;
+    color: white;
+    background: #00a8ff;
+}
+
+.cart-total {
+    text-align: right;
+    font-size: 25px;
+    font-weight: bold;
+    margin-top: 25px;
+}
+
+.empty {
+    background: white;
+    padding: 30px;
+    text-align: center;
+    border-radius: 12px;
+}
+
+.order-summary {
+    background: #f1f5f9;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    line-height: 2;
+}
+
+footer {
+    background: #0f172a;
+    color: white;
+    text-align: center;
+    padding: 30px;
+}
+
+@media(max-width:768px) {
+    .menu {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .navbar ul {
+        justify-content: center;
+    }
+
+    .header-txt h1 {
+        font-size: 38px;
+    }
+
+    .cart-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- INICIO -->
+<header id="inicio">
+
+<div class="container menu">
+
+<a href="#inicio" class="logo">JJSM</a>
+
+<nav class="navbar">
+<ul>
+<li><a href="#inicio">Inicio</a></li>
+<li><a href="#productos">Productos</a></li>
+<li><a href="#catalogo">Catálogo</a></li>
+<li><a href="#carrito">🛒 Carrito (<span id="contador">0</span>)</a></li>
+<li><a href="#pedido">Pedido</a></li>
+<li><a href="#cuenta">Iniciar sesión</a></li>
+<li><a href="#nosotros">Nosotros</a></li>
+<li><a href="#contacto">Contacto</a></li>
+</ul>
+</nav>
+
+</div>
+
+<div class="container header-content">
+<div class="header-txt">
+
+<h1>Compra tu <span>Impresora 3D</span></h1>
+
+<p>
+Encuentra las mejores impresoras 3D del mercado con excelente calidad,
+diseños modernos y precios accesibles para tus proyectos.
+</p>
+
+<div>
+<a href="#productos" class="btn">Ver productos</a>
+<a href="#contacto" class="btn">Contactar</a>
+</div>
+
+</div>
+</div>
+
+</header>
+
+<!-- PRODUCTOS POPULARES -->
+<section class="container" id="productos">
+
+<h2>Impresoras Populares</h2>
+
+<div class="products">
+
+<div class="card">
+<img src="imagen/imagen1.jpg" alt="Creality Halot R6">
+<div class="card-content">
+<h3>Creality Halot R6</h3>
+<p>Impresora de resina ideal para principiantes y proyectos detallados.</p>
+<div class="price">$3.200.000</div>
+<button class="btn agregar">Agregar al carrito</button>
+</div>
+</div>
+
+<div class="card">
+<img src="imagen/imagen2.jpg" alt="Anycubic Photon Mono 4">
+<div class="card-content">
+<h3>Anycubic Photon Mono 4</h3>
+<p>Alta resolución y excelente calidad de impresión.</p>
+<div class="price">$2.800.000</div>
+<button class="btn agregar">Agregar al carrito</button>
+</div>
+</div>
+
+<div class="card">
+<img src="imagen/imagen3.jpg" alt="Elegoo Mars 5 4K">
+<div class="card-content">
+<h3>Elegoo Mars 5 4K</h3>
+<p>Perfecta para proyectos de precisión y trabajos profesionales.</p>
+<div class="price">$2.500.000</div>
+<button class="btn agregar">Agregar al carrito</button>
+</div>
+</div>
+
+</div>
+</section>
+
+<!-- CATALOGO -->
+<section class="container" id="catalogo">
+
+<h2>Catálogo de Productos</h2>
+
+<div class="products">
+
+<div class="card">
+<img src="imagen/imagen1.jpg" alt="Creality Halot R6">
+<div class="card-content">
+<h3>Creality Halot R6</h3>
+<p>Impresora de resina compacta y funcional.</p>
+<div class="price">$3.200.000</div>
+<button class="btn agregar">Agregar al carrito</button>
+</div>
+</div>
+
+<div class="card">
+<img src="imagen/imagen2.jpg" alt="Anycubic Photon Mono 4">
+<div class="card-content">
+<h3>Anycubic Photon Mono 4</h3>
+<p>Impresiones con gran nivel de detalle.</p>
+<div class="price">$2.800.000</div>
+<button class="btn agregar">Agregar al carrito</button>
+</div>
+</div>
+
+<div class="card">
+<img src="imagen/imagen3.jpg" alt="Elegoo Mars 5 4K">
+<div class="card-content">
+<h3>Elegoo Mars 5 4K</h3>
+<p>Ideal para trabajos de alta precisión.</p>
+<div class="price">$2.500.000</div>
+<button class="btn agregar">Agregar al carrito</button>
+</div>
+</div>
+
+</div>
+</section>
+
+<!-- CARRITO -->
+<section class="container" id="carrito">
+
+<h2>🛒 Mi carrito de compras</h2>
+
+<div id="lista-carrito" class="empty">
+Tu carrito está vacío.
+</div>
+
+<div class="cart-total">
+Total: <span id="total">$0</span>
+</div>
+
+<div style="text-align:right;margin-top:20px;">
+<button class="btn" onclick="vaciarCarrito()">Vaciar carrito</button>
+<a href="#pedido" class="btn">Continuar con el pedido</a>
+</div>
+
+</section>
+
+<!-- DETALLES DEL PEDIDO -->
+<section class="container" id="pedido">
+
+<h2>Detalles del pedido</h2>
+
+<form class="form-box" id="form-pedido">
+
+<input type="text" id="nombre" placeholder="Nombre completo" required>
+
+<input type="email" id="correo" placeholder="Correo electrónico" required>
+
+<input type="tel" id="telefono" placeholder="Número de teléfono" required>
+
+<input type="text" id="direccion" placeholder="Dirección de entrega" required>
+
+<input type="text" id="ciudad" placeholder="Ciudad" required>
+
+<select id="pago" required>
+<option value="">Seleccionar método de pago</option>
+<option>Transferencia bancaria</option>
+<option>Tarjeta débito o crédito</option>
+<option>Pago contra entrega</option>
+</select>
+
+<h3>Resumen del pedido</h3>
+
+<div class="order-summary" id="resumen">
+No hay productos seleccionados.
+</div>
+
+<button type="submit" class="btn">Confirmar pedido</button>
+
+<p id="mensaje-pedido" style="color:green;text-align:center;margin-top:15px;"></p>
+
+</form>
+
+</section>
+
+<!-- INICIAR SESION -->
+<section class="container" id="cuenta">
+
+<h2>Iniciar sesión</h2>
+
+<form class="form-box" id="form-login">
+
+<input type="email" id="login-correo" placeholder="Correo electrónico" required>
+
+<input type="password" id="login-clave" placeholder="Contraseña" required>
+
+<button type="submit" class="btn">Ingresar</button>
+
+<p style="text-align:center;margin-top:20px;">
+¿No tienes cuenta? Contacta con nosotros para registrarte.
+</p>
+
+<p id="mensaje-login" style="text-align:center;color:green;margin-top:15px;"></p>
+
+</form>
+
+</section>
+
+<!-- RESPUESTA -->
+<section class="container" id="respuesta">
+
+<h2>Respuesta al Cliente</h2>
+
+<div class="card">
+<div class="card-content">
+<h3>Estado de solicitud</h3>
+<p>
+Gracias por contactar con JJSM. Hemos recibido correctamente
+tu solicitud. Nuestro equipo revisará la información y responderá
+lo antes posible con la disponibilidad del producto.
+</p>
+</div>
+</div>
+
+</section>
+
+<!-- NOSOTROS -->
+<section class="about" id="nosotros">
+
+<div class="container">
+
+<h2>Sobre Nosotros</h2>
+
+<p>
+Somos una tienda dedicada a la venta de impresoras 3D modernas
+y de alta calidad. Nuestro objetivo es brindar soluciones tecnológicas
+para estudiantes, empresas y personas apasionadas por la innovación
+y el diseño digital.
+</p>
+
+</div>
+
+</section>
+
+<!-- CONTACTO -->
+<section class="container" id="contacto">
+
+<h2>Contáctanos</h2>
+
+<form class="form-box" id="form-contacto">
+
+<input type="text" placeholder="Nombre completo" required>
+
+<input type="email" placeholder="Correo electrónico" required>
+
+<textarea rows="5" placeholder="Escribe tu mensaje"></textarea>
+
+<button type="submit" class="btn">Enviar mensaje</button>
+
+<p id="mensaje-contacto"></p>
+
+</form>
+
+</section>
+
+<footer>
+<p>© 2026 JJSM - Tienda de Impresoras 3D</p>
+</footer>
+
+<!-- FUNCIONES DEL CARRITO -->
+<script>
+
+let carrito = [];
+
+function formatoPrecio(valor) {
+    return valor.toLocaleString("es-CO", {
+        style: "currency",
+        currency: "COP",
+        maximumFractionDigits: 0
+    });
+}
+
+// Agregar productos
+document.querySelectorAll(".agregar").forEach(boton => {
+
+    boton.addEventListener("click", function() {
+
+        let tarjeta = this.closest(".card");
+
+        let nombre = tarjeta.querySelector("h3").textContent;
+
+        let precio = Number(
+            tarjeta.querySelector(".price").textContent.replace(/[^0-9]/g, "")
+        );
+
+        let producto = carrito.find(p => p.nombre === nombre);
+
+        if(producto) {
+            producto.cantidad++;
+        } else {
+            carrito.push({
+                nombre: nombre,
+                precio: precio,
+                cantidad: 1
+            });
+        }
+
+        actualizarCarrito();
+
+        alert("Producto agregado al carrito.");
+    });
+
+});
+
+// Mostrar carrito
+function actualizarCarrito() {
+
+    let lista = document.getElementById("lista-carrito");
+
+    let contador = document.getElementById("contador");
+
+    let total = 0;
+
+    let cantidad = 0;
+
+    if(carrito.length === 0) {
+
+        lista.className = "empty";
+        lista.innerHTML = "Tu carrito está vacío.";
+
+    } else {
+
+        lista.className = "";
+
+        lista.innerHTML = "";
+
+        carrito.forEach((producto, index) => {
+
+            let subtotal = producto.precio * producto.cantidad;
+
+            total += subtotal;
+
+            cantidad += producto.cantidad;
+
+            lista.innerHTML += `
+            <div class="cart-item">
+
+                <div>
+                    <h3>${producto.nombre}</h3>
+                    <p>Precio: ${formatoPrecio(producto.precio)}</p>
+                    <p>Subtotal: ${formatoPrecio(subtotal)}</p>
+                </div>
+
+                <div>
+                    <button onclick="cambiarCantidad(${index},-1)">-</button>
+
+                    <strong>${producto.cantidad}</strong>
+
+                    <button onclick="cambiarCantidad(${index},1)">+</button>
+
+                    <button onclick="eliminarProducto(${index})"
+                    style="background:#e63946;">Eliminar</button>
+                </div>
+
+            </div>
+            `;
+
+        });
+
+    }
+
+    document.getElementById("total").textContent = formatoPrecio(total);
+
+    contador.textContent = cantidad;
+
+    actualizarResumen();
+}
+
+// Cambiar cantidad
+function cambiarCantidad(index, cambio) {
+
+    carrito[index].cantidad += cambio;
+
+    if(carrito[index].cantidad <= 0) {
+        carrito.splice(index, 1);
+    }
+
+    actualizarCarrito();
+}
+
+// Eliminar producto
+function eliminarProducto(index) {
+
+    carrito.splice(index, 1);
+
+    actualizarCarrito();
+}
+
+// Vaciar carrito
+function vaciarCarrito() {
+
+    carrito = [];
+
+    actualizarCarrito();
+
+}
+
+// Resumen del pedido
+function actualizarResumen() {
+
+    let resumen = document.getElementById("resumen");
+
+    if(carrito.length === 0) {
+
+        resumen.innerHTML = "No hay productos seleccionados.";
+
+        return;
+    }
+
+    let total = 0;
+
+    let contenido = "";
+
+    carrito.forEach(producto => {
+
+        let subtotal = producto.precio * producto.cantidad;
+
+        total += subtotal;
+
+        contenido += `
+        ${producto.nombre} x ${producto.cantidad}
+        - ${formatoPrecio(subtotal)}<br>
+        `;
+
+    });
+
+    contenido += `<hr><strong>Total: ${formatoPrecio(total)}</strong>`;
+
+    resumen.innerHTML = contenido;
+
+}
+
+// Confirmar pedido
+document.getElementById("form-pedido").addEventListener("submit", function(e) {
+
+    e.preventDefault();
+
+    if(carrito.length === 0) {
+
+        alert("Debes agregar productos al carrito.");
+
+        return;
+    }
+
+    let nombre = document.getElementById("nombre").value;
+
+    document.getElementById("mensaje-pedido").textContent =
+    "¡Gracias " + nombre + "! Tu pedido fue registrado correctamente.";
+
+    alert("Pedido registrado correctamente.");
+
+    carrito = [];
+
+    actualizarCarrito();
+
+    this.reset();
+
+});
+
+// Inicio de sesión demostrativo
+document.getElementById("form-login").addEventListener("submit", function(e) {
+
+    e.preventDefault();
+
+    let correo = document.getElementById("login-correo").value;
+
+    document.getElementById("mensaje-login").textContent =
+    "Formulario recibido para: " + correo +
+    ". Para validar usuarios debes conectar una base de datos.";
+
+    this.reset();
+
+});
+
+// Contacto
+document.getElementById("form-contacto").addEventListener("submit", function(e) {
+
+    e.preventDefault();
+
+    document.getElementById("mensaje-contacto").textContent =
+    "Tu mensaje fue recibido correctamente.";
+
+    this.reset();
+
+});
+
+actualizarCarrito();
+
+</script>
+
+</body>
+</html>
